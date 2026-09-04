@@ -1,6 +1,6 @@
-# Ovateq Docs on GitHub Pages — v30
+# Ovateq Docs on GitHub Pages — v31
 
-This build is identical to v30 but uses **relative paths** (`./assets/…` instead of
+This build is identical to v31 but uses **relative paths** (`./assets/…` instead of
 `/assets/…`), so it works whether GitHub serves it from the root of a domain
 (`user.github.io`) or from a project sub-folder (`user.github.io/ovateq-docs`).
 Verified both ways.
@@ -25,7 +25,7 @@ silently drops anything starting with `_`.
 
 ## Deploy — no Git needed (website only)
 
-1. Unzip `ovateq-docs-app-dist-v30-github.zip`.
+1. Unzip `ovateq-docs-app-dist-v31-github.zip`.
 2. On github.com create a **new public repository** (e.g. `ovateq-docs`).
 3. In the empty repo choose **Add file → Upload files** and drag in everything
    from inside the extracted `ovateq-docs-app-dist` folder — the files, not the
@@ -44,7 +44,7 @@ If the upload page skips the dotfile (`.nojekyll`), add it afterwards with
 cd ovateq-docs-app-dist
 git init
 git add -A
-git commit -m "Ovateq Docs v30"
+git commit -m "Ovateq Docs v31"
 git branch -M main
 git remote add origin https://github.com/<username>/<repo>.git
 git push -u origin main
