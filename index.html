@@ -7,13 +7,13 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="icon" type="image/png" href="/ovateq-docs/icons/icon-192.png" />
-    <link rel="preload" href="/ovateq-docs/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="apple-touch-icon" href="/ovateq-docs/icons/icon-192.png" />
+    <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+    <link rel="preload" href="./fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="apple-touch-icon" href="./icons/icon-192.png" />
     <title>Ovateq Docs</title>
-    <script type="module" crossorigin src="/ovateq-docs/assets/index-BJd_Vy_a.js"></script>
-    <link rel="stylesheet" crossorigin href="/ovateq-docs/assets/index-DQ-IwFA_.css">
-  <link rel="manifest" href="/ovateq-docs/manifest.webmanifest"></head>
+    <script type="module" crossorigin src="./assets/index-DfAD_YjC.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BwDSOrmG.css">
+  <link rel="manifest" href="./manifest.webmanifest"></head>
   <body>
     <div id="root"></div>
 
@@ -57,29 +57,6 @@
           var el = document.getElementById('boot-fallback')
           if (el) el.style.display = 'flex'
         }
-
-        /* ── Proactive SW update on every boot ────────────────────────────
-           When a new build is deployed the old service worker is still cached
-           on the user's device. Calling update() asks the browser to fetch the
-           SW script immediately — if it has changed, the new SW installs,
-           skipWaiting fires, and the page gets the fresh bundle without the
-           user ever seeing the error card.
-           This is the root cause of "Ovateq Docs couldn't start" after a
-           deploy: old SW + new asset hashes = chunk not found. */
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.ready
-            .then(function (reg) { return reg.update() })
-            .catch(function () { /* offline — fine, cached version works */ })
-
-          /* If the SW tells us a new version just took control, reload once
-             so the page is served entirely from the fresh cache. */
-          navigator.serviceWorker.addEventListener('controllerchange', function () {
-            if (!window.__ovateqBooted) {
-              location.reload()
-            }
-          })
-        }
-
         // A script or stylesheet failing to load. This is only a HINT: hosts
         // inject their own scripts (Netlify adds /.netlify/scripts/hud, which
         // simply 404s offline) and a third-party script failing says nothing
